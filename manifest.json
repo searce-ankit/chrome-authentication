@@ -1,0 +1,37 @@
+{
+    "manifest_version": 3,
+    "name": "Google Chrome Authentication",
+    "description": "Demo Authentication",
+    "version": "0.0.1",
+    "content_scripts": [
+      {
+        "matches": ["https://mail.google.com/*"],
+        "js": ["app.js"],
+        "css":["style.css"],
+        "run_at": "document_idle",
+        "all_frames": true
+      }
+    ],
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self'"
+    },
+    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApEehPJLCdJh+66N9dxqubNVEdxdTgnJdWRh8KmY8OaA/AwAIucJfBmKzOgCjO0qDbc+ahtChAm4LRRtQ2xLQuKSf4MRJGkseSvDpaoc+lllBhvVsV+H0mKilqnivw9+W+b4EbX3eIzvfTIy+Cr7nWG8lh6QuF17RWDqQF7uXQLL1gI0HwtC3kjwXU/ppHRjlpSFm+0rTp7TA4tmtp1wJpTkqUgKwTcz8/4a21kCQXJrF6S3s1xW+8U89YWj0h2H079ns4gkn8CU+BBYphRBULIwIJJEpsMccYjvO3wvOPxxYT+ghnPt1UrjVV32DMb0hkhJM3CV7Oc7MP0e4nDDoSwIDAQAB",
+    "web_accessible_resources":[
+        {
+            "resources": [ "js/app.js" ],
+            "matches": [ "https://mail.google.com/*" ]
+          }
+    ],
+    "permissions": [
+        "storage",
+        "identity",
+        "identity.email",
+        "notifications",
+        "tabs"
+      ],
+      
+      "background": {
+          "service_worker": "background.js"
+      },
+      "action":{}
+  }
